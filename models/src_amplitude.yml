@@ -1,0 +1,37 @@
+version: 2
+
+sources: 
+  - name: amplitude
+    database: "{{ var('amplitude_database', target.database)}}" # add var config to dbt_project.yml
+    schema: "{{ var('amplitude_schema', 'amplitude')}}"
+
+    loader: fivetran
+    loaded_at_field: _fivetran_synced
+      
+    freshness:
+      warn_after: {count: 72, period: hour}
+      error_after: {count: 96, period: hour}
+
+    tables:
+      - name: event
+        # description: 
+
+        # columns:
+        #   - name: 
+        #     description: 
+
+        #   - name: 
+        #     description: 
+            
+        #   - name: 
+        #     description: 
+            
+        #   - name: 
+        #     description: 
+            
+        #   - name: 
+        #     description: 
+            
+        #   - name: 
+        #     description: 
+            
