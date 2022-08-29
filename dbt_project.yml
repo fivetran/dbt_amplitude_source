@@ -1,13 +1,16 @@
-name: 'connector_name'
+name: 'amplitude'
 version: '0.1.0'
 config-version: 2
 require-dbt-version: [">=1.0.0", "<2.0.0"]
 
 models:
-  connector:
-    +schema: stg_connector_name #connector for transform package
-    +materialized: table # for building the package, switch to views later? 
+  amplitude:
+    +schema: amplitude
+    +materialized: table
+    staging:
+      +schema: stg_amplitude
 
+#  look at mixpanel
 vars:
   connector:
     table_name: "{{ ref('stg_connector__table_name') }}" # all references to staging models should be vars
