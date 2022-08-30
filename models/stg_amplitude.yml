@@ -1,0 +1,130 @@
+version: 2
+
+models:
+  - name: stg_amplitude__event
+    description: Table of all events tracked by Amplitude.
+
+    columns:
+      - name: amplitude_id
+        description: An internal ID used to count unique users.
+      - name: ad_id
+        description: >
+          (Android) Google Play Services advertising ID (AdID). This usually is wiped
+          after ingestion and therefore will be blank
+      - name: amplitude_attribution_ids
+        description: >
+          Anonymized hash of the advertising IDs that we store for internal purposes;
+          not useful for the customer by any means. But this will appear if
+          advertising IDs were sent which proves that adid/idfv existed even though
+          currently wiped
+      - name: amplitude_event_type
+        description: >
+          Amplitude specific identifiers based on events Amplitude generates. This is
+          a legacy field so event_type should suffice for all queries.
+      - name: app
+        description: Project ID found in your project's Settings page
+      - name: city
+        description: City
+      - name: client_event_time
+        description: >
+          Local timestamp (UTC) of when the device logged the event.
+      - name: client_upload_time
+        description: The local timestamp (UTC) of when the device uploaded the event.
+      - name: country
+        description: Country
+      - name: data
+        description: >
+          Dictionary where certain fields such as first_event and merged_amplitude_id
+          are stored.
+      - name: device_brand
+        description: Device brand
+      - name: device_carrier
+        description: Device carrier.
+      - name: device_family
+        description: Device family. Apple iPhone
+      - name: device_id
+        description: The device specific identifier
+      - name: device_manufacturer
+        description: Device manufacturer
+      - name: device_model
+        description: The device model
+      - name: device_type
+        description: Device type
+      - name: dma
+        description: Designated marketing area (DMA)
+      - name: id
+        description: A counter that distinguishes events
+      - name: event_properties
+        description: >
+          Event properties are attributes of the events your users fire, and which you then send to Amplitude. Each event will have its own set of event properties. The nature of these properties depends on both the type of product you have, and the specific information you're most interested in discovering. For instance, if Swipe is an event you're tracking, the event property Direction could have the values Left or Right.
+          Some example event properties are description, category, type, duration, level, percent completed, count, source, status, number, lives, authenticated, error number, rank, action, and mode. 
+      - name: event_time
+        description: >
+          Amplitude timestamp (UTC) which is the client_event_time adjusted by the
+          difference between server_received_time and client_upload_time,
+          specifically: event_time = client_event_time + (server_received_time -
+          client_upload_time) 2015-08-10T12:00:00.000000 We use this timestamp to
+          organize events on Amplitude charts. Note: If the difference between
+          server_received_time and client_upload_time is less than 60 seconds, the
+          event_time will not be adjusted and will equal the client_event_time
+      - name: event_type
+        description: The assigned type of event. Example 'Add Friend'
+      - name: event_type_id
+        description: Internal identifier on Amplitude.
+      - name: group_properties
+        description: A dictionary of key-value pairs that represent data tied to the group. Each distinct value appears as a group segment on the Amplitude dashboard. You can store property values in an array, and date values are transformed into string values.
+      - name: groups
+        description: Group types. See the Accounts documentation for more information.
+      - name: idfa
+        description: >
+          (iOS) Identifier for Advertiser. This usually is wiped after ingestion and
+          therefore will be blank
+      - name: _insert_id
+        description: >
+          A unique identifier for the event. Amplitude deduplicates subsequent events sent with the same device_id and insert_id within the past 7 days. Amplitude recommends generating a UUID or using some combination of device_id, user_id, event_type, event_id, and time.  
+      - name: ip_address
+        description: IP address
+      - name: is_attribution_event
+        description: Boolean of whether event was an attribution event
+      - name: language
+        description: The language set by the user
+      - name: library
+        description: Library being used to send the event data.
+      - name: location_lat
+        description: Latitude
+      - name: location_lng
+        description: Longitude
+      - name: os_name
+        description: OS name
+      - name: os_version
+        description: OS version
+      - name: paying
+        description: True if the user has ever logged any revenue, otherwise '(none)'. Note the property value can be modified via the\_Identify API.
+      - name: platform
+        description: Platform of the device.
+      - name: processed_time
+        description: Time of when event was processed
+      - name: project_name
+        description: Project ID
+      - name: region
+        description: Region
+      - name: schema
+        description: Schema ID
+      - name: server_received_time
+        description: Amplitude timestamp (UTC) of when servers received the event
+      - name: server_upload_time
+        description: Amplitude timestamp (UTC) of when the event data was uploaded to Amplitude servers
+      - name: session_id
+        description: The session start time in milliseconds since epoch
+      - name: start_version
+        description: App version the user was first tracked on
+      - name: user_creation_time
+        description: Event_time (UTC) of the user's first event
+      - name: user_id
+        description: A readable ID specified by you
+      - name: user_properties
+        description: An attribute that describes a useful detail about the user it's attached to. Amplitude sends user properties with every event. 
+      - name: uuid
+        description: A unique identifier per row (event sent)
+      - name: version_name
+        description: The app version
