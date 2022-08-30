@@ -1,21 +1,16 @@
-name: 'amplitude'
+name: 'amplitude_source'
 version: '0.1.0'
 config-version: 2
 require-dbt-version: [">=1.0.0", "<2.0.0"]
 
 models:
-  amplitude:
-    +schema: amplitude
-    +materialized: table
-    staging:
-      +schema: stg_amplitude
+  amplitude_source:
+    +schema: stg_amplitude
+    materialized: table
 
 #  look at mixpanel
 vars:
-  connector:
-    table_name: "{{ ref('stg_connector__table_name') }}" # all references to staging models should be vars
-
-  connector_source:
-    table_name: "{{ source('connector', 'table_name') }}" # all sources should be vars
-
+  amplitude_source:
+    event: "{{ source('amplitude', 'event') }}"
+    event_type: "{{ source('amplitude', 'event_type') }}"
 
