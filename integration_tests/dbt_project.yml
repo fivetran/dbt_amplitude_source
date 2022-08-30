@@ -7,6 +7,7 @@ profile: 'integration_tests'
 vars:
     amplitude_schema: amplitude_source_integration_tests
     amplitude_event_identifier: "amplitude_event_data"
+    amplitude_event_type_identifier: "amplitude_event_type_data"
     # finish
 
 dispatch:
@@ -22,12 +23,12 @@ seeds:
 
 
 seeds:
-  snapchat_ads_source_integration_tests:
-    +quote_columns: "{{ true if target.type in ('redshift', 'postgres') else false }}"
-  snapchat_ads_integration_tests:
-    snapchat_ad_hourly_report_data:
-      +column_types:
-        date: timestamp
-    snapchat_creative_url_tag_history_data:
-      +column_types:
-        updated_at: timestamp
+  # snapchat_ads_source_integration_tests:
+  #   +quote_columns: "{{ true if target.type in ('redshift', 'postgres') else false }}"
+  # snapchat_ads_integration_tests:
+  #   snapchat_ad_hourly_report_data:
+  #     +column_types:
+  #       date: timestamp
+  #   snapchat_creative_url_tag_history_data:
+  #     +column_types:
+  #       updated_at: timestamp
