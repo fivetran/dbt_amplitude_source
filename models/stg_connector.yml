@@ -1,9 +1,0 @@
-version: 2
-
-models:
-  - name: stg_amplitude__event
-    description: Table of all events tracked by Amplitude.
-
-    columns: 
-      - name:
-        description:
