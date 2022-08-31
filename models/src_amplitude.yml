@@ -18,6 +18,10 @@ sources:
         description: Each record represents an event sent for your project.
         freshness: null
         columns:
+          - name: _fivetran_deleted
+            description: Timestamp of when Fivetran marked a record as deleted.
+          - name: _fivetran_synced
+            description: Timestamp of when Fivetran synced a record.
           - name: amplitude_id
             description: An internal ID used to count unique users.
           - name: ad_id
@@ -142,43 +146,42 @@ sources:
           - name: version_name
             description: The app version
 
-
       - name: event_type
         identifier: "{{ var('amplitude_event_type_identifier', 'event_type')}}"
         description: x
         freshness: null
         columns:
           - name: _fivetran_deleted
-            description:
+            description: Timestamp of when Fivetran marked a record as deleted
           - name: _fivetran_synced
-            description:
+            description: Timestamp of when Fivetran synced a record
           - name: autohidden
-            description:
+            description: Whether event type is hidden
           - name: deleted
-            description:
+            description: Whether event type is deleted
           - name: display
-            description:
+            description: The display name of the event
           - name: flow_hidden
-            description:
+            description: If the event is hidden from Pathfinder/Pathfinder Users or not
           - name: hidden
-            description:
+            description: If the event is hidden or not.
           - name: id
-            description:
+            description: Event type ID
           - name: in_waitroom
-            description:
+            description: Whether event type is in waitroom
           - name: name
-            description:
+            description: Event name
           - name: non_active
-            description:
+            description: If the event is marked inactive or not
           - name: project_name
-            description:
+            description: Project name
           - name: timeline_hidden
-            description:
+            description: If the event is hidden or not
           - name: totals
-            description:
+            description: The total number of times the event has happened this week
           - name: totals_delta
-            description:
+            description: x
           - name: value
-            description:
+            description: Name of the event in the raw data.
           - name: waitroom_approved
-            description:
+            description: x

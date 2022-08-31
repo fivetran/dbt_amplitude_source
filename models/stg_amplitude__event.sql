@@ -44,7 +44,10 @@ final as (
         event_type,
         event_type_id,
         group_properties,
-        groups,
+        {% if target.type == 'bigquery' %}
+        `groups`
+        {% else %} groups {% endif %}
+        as groups,
         id,
         idfa,
         ip_address,
@@ -60,7 +63,6 @@ final as (
         processed_time,
         project_name,
         region,
-        sample_rate,
         schema,
         server_received_time,
         server_upload_time,

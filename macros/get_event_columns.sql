@@ -25,7 +25,6 @@
     {"name": "event_type", "datatype": dbt_utils.type_string()},
     {"name": "event_type_id", "datatype": dbt_utils.type_int()},
     {"name": "group_properties", "datatype": dbt_utils.type_string()},
-    {"name": "groups", "datatype": dbt_utils.type_string()},
     {"name": "id", "datatype": dbt_utils.type_int()},
     {"name": "idfa", "datatype": dbt_utils.type_string()},
     {"name": "ip_address", "datatype": dbt_utils.type_string()},
@@ -41,7 +40,6 @@
     {"name": "processed_time", "datatype": dbt_utils.type_timestamp()},
     {"name": "project_name", "datatype": dbt_utils.type_string()},
     {"name": "region", "datatype": dbt_utils.type_string()},
-    {"name": "sample_rate", "datatype": dbt_utils.type_int()},
     {"name": "schema", "datatype": dbt_utils.type_int()},
     {"name": "server_received_time", "datatype": dbt_utils.type_timestamp()},
     {"name": "server_upload_time", "datatype": dbt_utils.type_timestamp()},
@@ -53,6 +51,12 @@
     {"name": "uuid", "datatype": dbt_utils.type_string()},
     {"name": "version_name", "datatype": dbt_utils.type_string()}
 ] %}
+
+{% if target.type == 'bigquery' %}
+{{ columns.append( {"name": "groups", "datatype": dbt_utils.type_string(), "quote": true} ) }}
+{% else %}
+{{ columns.append( {"name": "groups", "datatype": dbt_utils.type_string()} ) }}
+{% endif %} ,
 
 {{ return(columns) }}
 
