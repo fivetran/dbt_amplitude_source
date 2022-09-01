@@ -43,11 +43,8 @@ final as (
         event_time,
         event_type,
         event_type_id,
+        group_types,
         group_properties,
-        {% if target.type == 'bigquery' %}
-        `groups`
-        {% else %} groups {% endif %}
-        as groups,
         id,
         idfa,
         ip_address,

@@ -53,9 +53,9 @@
 ] %}
 
 {% if target.type == 'bigquery' %}
-{{ columns.append( {"name": "groups", "datatype": dbt_utils.type_string(), "quote": true} ) }}
+{{ columns.append( {"name": "groups", "datatype": dbt_utils.type_string(), "alias": "group_types", "quote": true} ) }}
 {% else %}
-{{ columns.append( {"name": "groups", "datatype": dbt_utils.type_string()} ) }}
+{{ columns.append( {"name": "groups", "alias": "group_types", "datatype": dbt_utils.type_string()} ) }}
 {% endif %} ,
 
 {{ return(columns) }}
