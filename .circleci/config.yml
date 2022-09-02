@@ -70,3 +70,13 @@ jobs:
             dbt run --target bigquery --full-refresh
             dbt run --target bigquery
             dbt test --target bigquery
+      - run:
+          name: "Run Tests - Spark"
+          command: |
+            . venv/bin/activate
+            echo `pwd`
+            cd integration_tests
+            dbt deps
+            dbt seed --target spark --full-refresh
+            dbt run --target spark --full-refresh
+            dbt test --target spark      
