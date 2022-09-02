@@ -22,7 +22,6 @@ final as (
     select 
         _fivetran_deleted,
         _fivetran_synced,
-        autohidden,
         deleted,
         display,
         flow_hidden,

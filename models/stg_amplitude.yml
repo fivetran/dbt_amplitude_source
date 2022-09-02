@@ -128,3 +128,10 @@ models:
         description: A unique identifier per row (event sent)
       - name: version_name
         description: The app version
+
+  - name: stg_amplitude__event_type
+    description: Table of all events types. 
+
+    columns:
+      - name: amplitude_id
+        description: An internal ID used to count unique users.
