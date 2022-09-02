@@ -15,7 +15,7 @@ dispatch:
     search_order: ['spark_utils', 'dbt_utils']
 
 seeds:
-  amplitude_integration_tests:
+  amplitude_source_integration_tests:
     +column_types:
       _fivetran_synced: timestamp
     amplitude_event_data:
@@ -34,7 +34,7 @@ seeds:
 
 
 
-seeds:
+# seeds:
   # snapchat_ads_source_integration_tests:
   #   +quote_columns: "{{ true if target.type in ('redshift', 'postgres') else false }}"
   # snapchat_ads_integration_tests:
