@@ -21,8 +21,10 @@ seeds:
     amplitude_event_data:
       +column_types:
         id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        app: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         amplitude_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         event_type_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        project_name: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         schema: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         session_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
     amplitude_event_type_data:
