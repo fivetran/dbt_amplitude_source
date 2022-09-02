@@ -45,7 +45,7 @@ final as (
         event_type_id,
         group_types,
         group_properties,
-        id,
+        id as event_id,
         idfa,
         ip_address,
         is_attribution_event,

@@ -148,7 +148,7 @@ sources:
 
       - name: event_type
         identifier: "{{ var('amplitude_event_type_identifier', 'event_type')}}"
-        description: x
+        description: Each record represents information about an event type.
         freshness: null
         columns:
           - name: _fivetran_deleted
@@ -180,8 +180,8 @@ sources:
           - name: totals
             description: The total number of times the event has happened this week
           - name: totals_delta
-            description: x
+            description: Totals delta
           - name: value
             description: Name of the event in the raw data.
           - name: waitroom_approved
-            description: x
+            description: Waitroom approved

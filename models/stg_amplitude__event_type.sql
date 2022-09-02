@@ -26,7 +26,7 @@ final as (
         display,
         flow_hidden,
         hidden,
-        id,
+        id as event_type_id,
         in_waitroom,
         name,
         non_active,
