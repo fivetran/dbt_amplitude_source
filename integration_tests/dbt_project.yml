@@ -20,17 +20,17 @@ seeds:
       _fivetran_synced: timestamp
     amplitude_event_data:
       +column_types:
-        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        app: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        amplitude_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        event_type_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        project_name: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        schema: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        session_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        id: "{{ 'FLOAT64' if target.type == 'bigquery' else 'float' }}"
+        app: "{{ 'FLOAT64' if target.type == 'bigquery' else 'float' }}"
+        amplitude_id: "{{ 'FLOAT64' if target.type == 'bigquery' else 'float' }}"
+        event_type_id: "{{ 'FLOAT64' if target.type == 'bigquery' else 'float' }}"
+        project_name: "{{ 'FLOAT64' if target.type == 'bigquery' else 'float' }}"
+        schema: "{{ 'FLOAT64' if target.type == 'bigquery' else 'float' }}"
+        session_id: "{{ 'FLOAT64' if target.type == 'bigquery' else 'float' }}"
     amplitude_event_type_data:
       +column_types:
-        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
-        project_name: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        id: "{{ 'FLOAT64' if target.type == 'bigquery' else 'float' }}"
+        project_name: "{{ 'FLOAT64' if target.type == 'bigquery' else 'float' }}"
 
 
 
