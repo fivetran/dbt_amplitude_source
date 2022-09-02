@@ -1,27 +1,34 @@
-name: 'PACKAGE_NAME_integration_tests'
+name: 'amplitude_source_integration_tests'
 version: '0.1.0'
 config-version: 2
 profile: 'integration_tests'
 
 
 vars:
-  PACKAGE_NAME:
-      table: "{{ ref('table_data') }}"
-      table_2: "{{ ref('table_2_data') }}"
-      using_bool: True
-      using_bool_2: True
+    amplitude_schema: amplitude_source_integration_tests
+    amplitude_event_identifier: "amplitude_event_data"
+    amplitude_event_type_identifier: "amplitude_event_type_data"
+    # finish
+
+dispatch:
+  - macro_namespace: dbt_utils
+    search_order: ['spark_utils', 'dbt_utils']
 
 seeds:
-  PACKAGE_NAME_integration_tests:
+  amplitude_integration_tests:
     +column_types:
       _fivetran_synced: timestamp
-    table:
-      +column_types:
-        create_time: timestamp
-        start_time: timestamp
-    table_2:
-      +column_types:
-        create_time: timestamp
-        start_time: timestamp
-        send_time: timestamp
 
+
+
+
+seeds:
+  # snapchat_ads_source_integration_tests:
+  #   +quote_columns: "{{ true if target.type in ('redshift', 'postgres') else false }}"
+  # snapchat_ads_integration_tests:
+  #   snapchat_ad_hourly_report_data:
+  #     +column_types:
+  #       date: timestamp
+  #   snapchat_creative_url_tag_history_data:
+  #     +column_types:
+  #       updated_at: timestamp

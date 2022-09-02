@@ -12,28 +12,16 @@ jobs:
           run: setup_creds
           command: |
             echo $GCLOUD_SERVICE_KEY | base64 --decode --ignore-garbage > ${HOME}/gcloud-service-key.json
-      - restore_cache:
-          key: deps2-{{ .Branch }}
-
       - run:
           name: "Setup dbt"
           command: |
+            sudo apt install libsasl2-dev
             python3 -m venv venv
             . venv/bin/activate
             pip install --upgrade pip setuptools
             pip install -r integration_tests/requirements.txt
             mkdir -p ~/.dbt
             cp integration_tests/ci/sample.profiles.yml ~/.dbt/profiles.yml
-      - run:
-          name: "Run Tests - Redshift"
-          command: |
-            . venv/bin/activate
-            echo `pwd`
-            cd integration_tests
-            dbt deps
-            dbt seed --target redshift --full-refresh
-            dbt run --target redshift --full-refresh
-            dbt test --target redshift
       - run:
           name: "Run Tests - Postgres"
           command: |
@@ -44,6 +32,26 @@ jobs:
             dbt seed --target postgres --full-refresh
             dbt run --target postgres --full-refresh
             dbt test --target postgres
+      - run:
+          name: "Run Tests - Spark"
+          command: |
+            . venv/bin/activate
+            echo `pwd`
+            cd integration_tests
+            dbt deps
+            dbt seed --target spark --full-refresh
+            dbt run --target spark --full-refresh
+            dbt test --target spark
+      - run:
+          name: "Run Tests - Redshift"
+          command: |
+            . venv/bin/activate
+            echo `pwd`
+            cd integration_tests
+            dbt deps
+            dbt seed --target redshift --full-refresh
+            dbt run --target redshift --full-refresh
+            dbt test --target redshift
       - run:
           name: "Run Tests - Snowflake"
           command: |
@@ -67,7 +75,4 @@ jobs:
             dbt seed --target bigquery --full-refresh
             dbt run --target bigquery --full-refresh
             dbt test --target bigquery
-      - save_cache:
-          key: deps2-{{ .Branch }}
-          paths:
-            - "venv"
+            
