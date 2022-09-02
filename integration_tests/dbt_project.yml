@@ -18,7 +18,10 @@ seeds:
   amplitude_integration_tests:
     +column_types:
       _fivetran_synced: timestamp
-
+    amplitude_event_type_data:
+      +column_types:
+        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        project_name: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
 
 
 
