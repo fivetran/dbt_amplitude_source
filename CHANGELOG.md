@@ -9,6 +9,6 @@ This package is designed enrich your Fivetran Amplitude data by doing the follow
 - Add column-level testing where applicable. For example, all primary keys are tested for uniqueness and non-null values
 - Model staging tables, which will be used in our transform package
 
-Currently the package supports Postgres, Redshift, BigQuery, and Snowflake. Additionally, this package is designed to work with dbt versions [">=1.0.0", "<2.0.0"].
+Currently the package supports Postgres, Redshift, BigQuery, Databricks, and Snowflake. Additionally, this package is designed to work with dbt versions [">=1.0.0", "<2.0.0"].
 
 - For more information refer to the [README](/README.md).
