@@ -16,7 +16,6 @@ sources:
       - name: event
         identifier: "{{ var('amplitude_event_identifier', 'event')}}"
         description: Each record represents an event sent for your project.
-        freshness: null
         columns:
           - name: _fivetran_deleted
             description: Timestamp of when Fivetran marked a record as deleted.
@@ -149,7 +148,6 @@ sources:
       - name: event_type
         identifier: "{{ var('amplitude_event_type_identifier', 'event_type')}}"
         description: Each record represents information about an event type.
-        freshness: null
         columns:
           - name: _fivetran_deleted
             description: Timestamp of when Fivetran marked a record as deleted

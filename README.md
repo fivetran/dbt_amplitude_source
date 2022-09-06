@@ -24,15 +24,7 @@
 ## Step 1: Prerequisites
 To use this dbt package, you must have the following:
 - At least one Fivetran Amplitude connector syncing data into your destination. 
-- A **BigQuery**, **Snowflake**, **Redshift**, **Databricks**, or **PostgreSQL** destination.
-
-### Databricks Dispatch Configuration
-If you are using a Databricks destination with this package you will need to add the below (or a variation of the below) dispatch configuration within your `dbt_project.yml`. This is required in order for the package to accurately search for macros within the `dbt-labs/spark_utils` then the `dbt-labs/dbt_utils` packages respectively.
-```yml
-dispatch:
-  - macro_namespace: dbt_utils
-    search_order: ['spark_utils', 'dbt_utils']
-```
+- A **BigQuery**, **Snowflake**, **Redshift**, or **PostgreSQL** destination.
 
 ## Step 2: Install the package
 Include the following amplitude_source package version in your `packages.yml` file.
@@ -54,16 +46,6 @@ vars:
 ```
 
 ## (Optional) Step 4: Additional configurations
-### Passing Through Additional Metrics
-By default, this package will select the fields from the source tables to pass into the staging models, that are currently shown in the existing staging models. If you would like to pass through additional metrics to the staging models and end models, add the following configuration to your `dbt_project.yml` file:
-
-```yml
-vars:
-  amplitude__ad_hourly_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from amplitude.ad_hourly_report
-  amplitude__ad_squad_hourly_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from amplitude.ad_squad_hourly_report
-  amplitude__campaign_hourly_report_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from amplitude.campaign_hourly_report
-```
-> Please ensure you use due diligence when adding metrics to these models which will be summed upon aggregation. The metrics added by default have been vetted by the Fivetran team maintaining this package for accuracy.  You will want to ensure whichever metrics you pass through are indeed appropriate to aggregate.
 ### Change the source table references
 If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable:
 > IMPORTANT: See this project's [`dbt_project.yml`](https://github.com/fivetran/dbt_amplitude_source/blob/main/dbt_project.yml) variable declarations to see the expected names.
