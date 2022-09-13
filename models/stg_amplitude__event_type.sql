@@ -28,7 +28,7 @@ final as (
         hidden,
         id as event_type_id,
         in_waitroom,
-        name,
+        name as event_type_name,
         non_active,
         project_name,
         timeline_hidden,

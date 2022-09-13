@@ -155,8 +155,8 @@ models:
         description: If the event is hidden or not.
       - name: in_waitroom
         description: Whether event type is in waitroom
-      - name: name
-        description: Event name
+      - name: event_type_name
+        description: Event type name
       - name: non_active
         description: If the event is marked inactive or not
       - name: project_name
