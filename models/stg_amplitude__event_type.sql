@@ -1,3 +1,4 @@
+{{ config(materialized='ephemeral') }}
 
 with base as (
 

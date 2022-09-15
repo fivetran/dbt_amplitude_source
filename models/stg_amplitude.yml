@@ -75,8 +75,8 @@ models:
         description: Internal identifier on Amplitude.
       - name: group_properties
         description: A dictionary of key-value pairs that represent data tied to the group. Each distinct value appears as a group segment on the Amplitude dashboard. You can store property values in an array, and date values are transformed into string values.
-      - name: groups
-        description: Group types. See the Accounts documentation for more information.
+      - name: group_types
+        description: Group types. "Groups" in the source table, renamed here. See the Accounts documentation for more information.
       - name: idfa
         description: >
           (iOS) Identifier for Advertiser. This usually is wiped after ingestion and
@@ -123,7 +123,12 @@ models:
       - name: user_creation_time
         description: Event_time (UTC) of the user's first event
       - name: user_id
-        description: A readable ID specified by you
+        description: >
+          A readable ID specified by you.
+          Amplitude uses a combination of three different methods to identify your users: device IDs, Amplitude ID, and user IDs. The first comes directly from your users' devices, while the second is an ID that Amplitude automatically creates once it has enough information to conclusively identify a unique user. The user ID, however, is something you'd set up.
+          In Amplitude, a user ID is a unique identifier applied to individual users. Using them is optional, but recommended: your product should set a user ID once a user has created an account, logged in, or is otherwise identified in your product.
+          Amplitude can use a user ID to reconcile events across multiple devices under the same user ID. Additionally, a user's event data will be merged on the backend so that all anonymous events prior to the assignment of a user ID will be connected to the correct user. For this reason, you can wait to assign user IDs if that makes sense for your product. Conversely, this is also why you should not set user IDs for anonymous users.
+          Once set, user IDs in Amplitude cannot be changed.Once set, user IDs in Amplitude cannot be changed.
       - name: user_properties
         description: An attribute that describes a useful detail about the user it's attached to. Amplitude sends user properties with every event. 
       - name: uuid

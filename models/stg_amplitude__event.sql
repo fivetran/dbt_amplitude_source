@@ -1,3 +1,4 @@
+{{ config(materialized='ephemeral') }}
 
 with base as (
 
@@ -43,7 +44,7 @@ final as (
         event_time,
         event_type,
         event_type_id,
-        group_types,
+        groups,
         group_properties,
         id as event_id,
         idfa,
