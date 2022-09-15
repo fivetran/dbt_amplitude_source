@@ -19,7 +19,7 @@ fields as (
 
 final as (
     
-    select 
+    select  
         _fivetran_synced,
         _insert_id,
         ad_id,
@@ -55,7 +55,7 @@ final as (
         location_lng,
         os_name,
         os_version,
-        paying,
+        paying, 
         platform,
         processed_time,
         project_name,
@@ -70,7 +70,7 @@ final as (
         user_properties,
         uuid,
         version_name
-    from fields
+    from fields 
 )
 
 select *

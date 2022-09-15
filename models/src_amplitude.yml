@@ -9,10 +9,10 @@ sources:
     loaded_at_field: _fivetran_synced
       
     freshness:
-      warn_after: {count: 72, period: hour}
-      error_after: {count: 96, period: hour}
+      warn_after: {count: 72, period: hour} 
+      error_after: {count: 96, period: hour} 
 
-    tables:
+    tables: 
       - name: event
         identifier: "{{ var('amplitude_event_identifier', 'event')}}"
         description: Each record represents an event sent for your project.

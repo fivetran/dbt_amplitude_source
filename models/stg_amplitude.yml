@@ -7,59 +7,59 @@ models:
     columns:
       - name: event_id
         description: A counter that distinguishes events
-          - unique
-          - not_null 
+          - unique 
+          - not_null  
       - name: amplitude_id
         description: An internal ID used to count unique users.
       - name: ad_id
         description: >
           (Android) Google Play Services advertising ID (AdID). This usually is wiped
           after ingestion and therefore will be blank
-      - name: amplitude_attribution_ids
+      - name: amplitude_attribution_ids 
         description: >
-          Anonymized hash of the advertising IDs that we store for internal purposes;
-          not useful for the customer by any means. But this will appear if
-          advertising IDs were sent which proves that adid/idfv existed even though
-          currently wiped
-      - name: amplitude_event_type
-        description: >
-          Amplitude specific identifiers based on events Amplitude generates. This is
-          a legacy field so event_type should suffice for all queries.
+          Anonymized hash of the advertising IDs that we store for internal purposes; 
+          not useful for the customer by any means. But this will appear if 
+          advertising IDs were sent which proves that adid/idfv existed even though 
+          currently wiped 
+      - name: amplitude_event_type 
+        description: > 
+          Amplitude specific identifiers based on events Amplitude generates. This is 
+          a legacy field so event_type should suffice for all queries. 
       - name: app
         description: Project ID found in your project's Settings page
       - name: city
-        description: City
+        description: City 
       - name: client_event_time
         description: >
           Local timestamp (UTC) of when the device logged the event.
       - name: client_upload_time
         description: The local timestamp (UTC) of when the device uploaded the event.
-      - name: country
-        description: Country
-      - name: data
-        description: >
-          Dictionary where certain fields such as first_event and merged_amplitude_id
-          are stored.
-      - name: device_brand
-        description: Device brand
-      - name: device_carrier
-        description: Device carrier.
+      - name: country 
+        description: Country 
+      - name: data 
+        description: > 
+          Dictionary where certain fields such as first_event and merged_amplitude_id 
+          are stored. 
+      - name: device_brand 
+        description: Device brand 
+      - name: device_carrier 
+        description: Device carrier. 
       - name: device_family
         description: Device family. Apple iPhone
       - name: device_id
         description: The device specific identifier
       - name: device_manufacturer
         description: Device manufacturer
-      - name: device_model
-        description: The device model
-      - name: device_type
-        description: Device type
+      - name: device_model 
+        description: The device model 
+      - name: device_type 
+        description: Device type 
       - name: dma
         description: Designated marketing area (DMA)
-      - name: event_properties
-        description: >
-          Event properties are attributes of the events your users fire, and which you then send to Amplitude. Each event will have its own set of event properties. The nature of these properties depends on both the type of product you have, and the specific information you're most interested in discovering. For instance, if Swipe is an event you're tracking, the event property Direction could have the values Left or Right.
-          Some example event properties are description, category, type, duration, level, percent completed, count, source, status, number, lives, authenticated, error number, rank, action, and mode. 
+      - name: event_properties 
+        description: > 
+          Event properties are attributes of the events your users fire, and which you then send to Amplitude. Each event will have its own set of event properties. The nature of these properties depends on both the type of product you have, and the specific information you're most interested in discovering. For instance, if Swipe is an event you're tracking, the event property Direction could have the values Left or Right. 
+          Some example event properties are description, category, type, duration, level, percent completed, count, source, status, number, lives, authenticated, error number, rank, action, and mode.  
       - name: event_time
         description: >
           Amplitude timestamp (UTC) which is the client_event_time adjusted by the
@@ -75,8 +75,8 @@ models:
         description: Internal identifier on Amplitude.
       - name: group_properties
         description: A dictionary of key-value pairs that represent data tied to the group. Each distinct value appears as a group segment on the Amplitude dashboard. You can store property values in an array, and date values are transformed into string values.
-      - name: groups
-        description: Group types. See the Accounts documentation for more information.
+      - name: groups 
+        description: Group types. See the Accounts documentation for more information. 
       - name: idfa
         description: >
           (iOS) Identifier for Advertiser. This usually is wiped after ingestion and
@@ -84,34 +84,34 @@ models:
       - name: _insert_id
         description: >
           A unique identifier for the event. Amplitude deduplicates subsequent events sent with the same device_id and insert_id within the past 7 days. Amplitude recommends generating a UUID or using some combination of device_id, user_id, event_type, event_id, and time.  
-      - name: ip_address
-        description: IP address
+      - name: ip_address 
+        description: IP address 
       - name: is_attribution_event
         description: Boolean of whether event was an attribution event
       - name: language
         description: The language set by the user
       - name: library
         description: Library being used to send the event data.
-      - name: location_lat
-        description: Latitude
-      - name: location_lng
-        description: Longitude
-      - name: os_name
-        description: OS name
+      - name: location_lat 
+        description: Latitude 
+      - name: location_lng 
+        description: Longitude 
+      - name: os_name 
+        description: OS name 
       - name: os_version
         description: OS version
-      - name: paying
-        description: True if the user has ever logged any revenue, otherwise '(none)'. Note the property value can be modified via the\_Identify API.
+      - name: paying 
+        description: True if the user has ever logged any revenue, otherwise '(none)'. Note the property value can be modified via the\_Identify API. 
       - name: platform
         description: Platform of the device.
       - name: processed_time
         description: Time of when event was processed
-      - name: project_name
-        description: Project ID
-      - name: region
-        description: Region
-      - name: schema
-        description: Schema ID
+      - name: project_name 
+        description: Project ID 
+      - name: region 
+        description: Region 
+      - name: schema 
+        description: Schema ID 
       - name: server_received_time
         description: Amplitude timestamp (UTC) of when servers received the event
       - name: server_upload_time
@@ -137,37 +137,37 @@ models:
     columns:
       - name: event_type_id
         description: Event type ID
-          - unique
-          - not_null
+          - unique 
+          - not_null 
       - name: _fivetran_deleted
         description: Timestamp of when Fivetran marked a record as deleted
       - name: _fivetran_synced
         description: Timestamp of when Fivetran synced a record
-      - name: autohidden
-        description: Whether event type is hidden
-      - name: deleted
-        description: Whether event type is deleted
+      - name: autohidden 
+        description: Whether event type is hidden 
+      - name: deleted 
+        description: Whether event type is deleted 
       - name: display
         description: The display name of the event
-      - name: flow_hidden
-        description: If the event is hidden from Pathfinder/Pathfinder Users or not
+      - name: flow_hidden 
+        description: If the event is hidden from Pathfinder/Pathfinder Users or not 
       - name: hidden
         description: If the event is hidden or not.
-      - name: in_waitroom
-        description: Whether event type is in waitroom
+      - name: in_waitroom 
+        description: Whether event type is in waitroom 
       - name: event_type_name
         description: Event type name
-      - name: non_active
-        description: If the event is marked inactive or not
+      - name: non_active 
+        description: If the event is marked inactive or not 
       - name: project_name
         description: Project name
-      - name: timeline_hidden
-        description: If the event is hidden or not
-      - name: totals
-        description: The total number of times the event has happened this week
-      - name: totals_delta
-        description: Totals delta
+      - name: timeline_hidden 
+        description: If the event is hidden or not 
+      - name: totals 
+        description: The total number of times the event has happened this week 
+      - name: totals_delta 
+        description: Totals delta 
       - name: value
         description: Name of the event in the raw data.
-      - name: waitroom_approved
-        description: Waitroom approved
+      - name: waitroom_approved 
+        description: Waitroom approved 

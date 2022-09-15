@@ -10,7 +10,7 @@
         <img src="https://img.shields.io/badge/Contributions-welcome-blueviolet" /></a>
 </p>
 
-# Amplitude Source dbt Package ([Docs](https://fivetran.github.io/dbt_amplitude_source/))
+# Amplitude Source dbt Package ([Docs](https://fivetran.github.io/dbt_amplitude_source/)) 
 # 📣 What does this dbt package do?
 - Materializes [Amplitude staging tables](https://fivetran.github.io/dbt_amplitude_source/#!/overview/amplitude_source/models/?g_v=1) which leverage data in the format described by [this ERD](https://fivetran.com/docs/applications/amplitude/#schemainformation). These staging tables clean, test, and prepare your Amplitude data from [Fivetran's connector](https://fivetran.com/docs/applications/amplitude) for analysis by doing the following:
   - Name columns for consistency across all packages and for easier analysis
@@ -32,7 +32,7 @@ Include the following amplitude_source package version in your `packages.yml` fi
 ```yaml
 packages:
   - package: fivetran/amplitude_source
-    version: [">=0.0.0", "<0.1.0"]
+    version: [">=0.0.0", "<0.1.0"] 
 ```
 ## Step 3: Configure your variables
 
@@ -45,7 +45,7 @@ vars:
     amplitude_schema: your_schema_name 
 ```
 
-## (Optional) Step 4: Additional configurations
+## (Optional) Step 4: Additional configurations 
 ### Change the source table references
 If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable:
 > IMPORTANT: See this project's [`dbt_project.yml`](https://github.com/fivetran/dbt_amplitude_source/blob/main/dbt_project.yml) variable declarations to see the expected names.
@@ -56,7 +56,7 @@ vars:
 ```
 
 ### Change the build schema
-By default, this package builds the Amplitude staging models within a schema titled (`<target_schema>` + `_stg_amplitude`) in your destination. If this is not where you would like your Amplitude staging data to be written to, add the following configuration to your root `dbt_project.yml` file:
+By default, this package builds the Amplitude staging models within a schema titled (`<target_schema>` + `_stg_amplitude`) in your destination. If this is not where you would like your Amplitude staging data to be written to, add the following configuration to your root `dbt_project.yml` file: 
 
 ```yml
 models:
@@ -84,8 +84,8 @@ packages:
 ## Package Maintenance
 The Fivetran team maintaining this package _only_ maintains the latest version of the package. We highly recommend that you stay consistent with the [latest version](https://hub.getdbt.com/fivetran/amplitude_source/latest/) of the package and refer to the [CHANGELOG](https://github.com/fivetran/dbt_amplitude_source/blob/main/CHANGELOG.md) and release notes for more information on changes across versions.
 
-## Opinionated Decisions
-In creating this package, which is meant for a wide range of use cases, we had to take opinionated stances on a few different questions we came across during development. We've consolidated significant choices we made in the [DECISIONLOG.md](https://github.com/fivetran/dbt_amplitude_source/blob/main/DECISIONLOG.md), and will continue to update as the package evolves. We are always open to and encourage feedback on these choices, and the package in general.
+## Opinionated Decisions 
+In creating this package, which is meant for a wide range of use cases, we had to take opinionated stances on a few different questions we came across during development. We've consolidated significant choices we made in the [DECISIONLOG.md](https://github.com/fivetran/dbt_amplitude_source/blob/main/DECISIONLOG.md), and will continue to update as the package evolves. We are always open to and encourage feedback on these choices, and the package in general. 
 
 ## Contributions
 A small team of analytics engineers at Fivetran develops these dbt packages. However, the packages are made better by community contributions! 

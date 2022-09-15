@@ -5,10 +5,10 @@ require-dbt-version: [">=1.0.0", "<2.0.0"]
 
 models:
   amplitude_source:
-    +schema: stg_amplitude
+    +schema: stg_amplitude 
     materialized: table
 
-#  look at mixpanel
+#  look at mixpanel 
 vars:
   amplitude_source:
     event: "{{ source('amplitude', 'event') }}"

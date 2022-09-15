@@ -1,4 +1,4 @@
-name: 🐞 Bug
+name: 🐞 Bug  
 description: Report a bug or an issue you've found with dbt
 title: "[Bug] <title>"
 labels: ["bug", "triage"]

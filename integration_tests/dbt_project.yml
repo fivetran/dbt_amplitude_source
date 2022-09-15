@@ -8,7 +8,7 @@ vars:
     amplitude_schema: amplitude_source_integration_tests
     amplitude_event_identifier: "amplitude_event_data"
     amplitude_event_type_identifier: "amplitude_event_type_data"
-    # finish
+    # finish 
 
 dispatch:
   - macro_namespace: dbt_utils

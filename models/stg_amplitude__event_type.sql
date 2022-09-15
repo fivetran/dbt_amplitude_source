@@ -19,12 +19,12 @@ fields as (
 
 final as (
     
-    select 
+    select  
         _fivetran_deleted,
         _fivetran_synced,
-        deleted,
-        display,
-        flow_hidden,
+        deleted, 
+        display, 
+        flow_hidden, 
         hidden,
         id as event_type_id,
         in_waitroom,
@@ -36,7 +36,7 @@ final as (
         totals_delta,
         value,
         waitroom_approved
-    from fields
+    from fields 
 )
 
 select *
