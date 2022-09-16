@@ -44,7 +44,7 @@ final as (
         event_time,
         event_type,
         event_type_id,
-        groups,
+        group_types,
         group_properties,
         id as event_id,
         idfa,
