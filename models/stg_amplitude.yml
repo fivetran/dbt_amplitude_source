@@ -5,10 +5,12 @@ models:
     description: Table of all events tracked by Amplitude.
 
     columns:
-      - name: event_id
-        description: A counter that distinguishes events
+      - name: unique_event_id
+        description: A unique key concatenating event_id and session_id
           - unique
           - not_null 
+      - name: event_id
+        description: A counter that distinguishes events
       - name: amplitude_id
         description: An internal ID used to count unique users.
       - name: ad_id

@@ -18,7 +18,7 @@ fields as (
     from base
 ),
 
-final as (
+final_pre as (
     
     select 
         _fivetran_synced,
@@ -72,6 +72,14 @@ final as (
         uuid,
         version_name
     from fields
+),
+
+final as (
+
+    select
+        *,
+        {{ dbt_utils.surrogate_key(['event_id','session_id']) }} as unique_event_id,
+    from finals_pre
 )
 
 select *
