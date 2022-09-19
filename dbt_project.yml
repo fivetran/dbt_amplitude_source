@@ -7,8 +7,9 @@ models:
   amplitude_source:
     +schema: stg_amplitude
     materialized: table
+    tmp:
+      materialized: view
 
-#  look at mixpanel
 vars:
   amplitude_source:
     event: "{{ source('amplitude', 'event') }}"
