@@ -77,7 +77,7 @@ final as (
     select
         *,
         {{ dbt_utils.surrogate_key(['event_id','session_id']) }} as unique_event_id,
-    from finals_pre
+    from final_pre
 )
 
 select *
