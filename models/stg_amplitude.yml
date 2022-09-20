@@ -12,9 +12,6 @@ models:
           - not_null
       - name: unique_session_id
         description: A unique key for each session, concatenating user_id and session_id
-        tests:
-          - unique
-          - not_null
       - name: event_id
         description: A counter that distinguishes events
       - name: amplitude_id
