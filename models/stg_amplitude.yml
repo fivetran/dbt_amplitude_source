@@ -6,9 +6,15 @@ models:
 
     columns:
       - name: unique_event_id
-        description: A unique key concatenating event_id and session_id
+        description: A unique key for each event, concatenating event_id and session_id
+        tests:
           - unique
-          - not_null 
+          - not_null
+      - name: unique_session_id
+        description: A unique key for each session, concatenating user_id and session_id
+        tests:
+          - unique
+          - not_null
       - name: event_id
         description: A counter that distinguishes events
       - name: amplitude_id
@@ -144,6 +150,7 @@ models:
     columns:
       - name: event_type_id
         description: Event type ID
+        tests:
           - unique
           - not_null
       - name: _fivetran_deleted
