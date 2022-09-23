@@ -16,26 +16,35 @@ fields as (
     from base
 ),
 
-final as (
+final_pre as (
     
-    select 
-        _fivetran_deleted,
-        _fivetran_synced,
-        deleted,
-        display,
-        flow_hidden,
-        hidden,
+    select
         id as event_type_id,
-        in_waitroom,
         name as event_type_name,
-        non_active,
         project_name,
-        timeline_hidden,
+        display,
         totals,
         totals_delta,
         value,
-        waitroom_approved
+        flow_hidden as is_flow_hidden,
+        hidden as is_hidden,
+        in_waitroom as is_in_waitroom,
+        non_active as is_non_active,
+        autohidden as is_autohidden,
+        deleted as is_deleted,
+        timeline_hidden as is_timeline_hidden,
+        waitroom_approved as is_waitroom_approved,
+        _fivetran_deleted,
+        _fivetran_synced
     from fields
+),
+
+final as (
+
+    select
+        *,
+        {{ dbt_utils.surrogate_key(['event_type_id','project_name']) }} as unique_event_type_id
+    from final_pre
 )
 
 select *

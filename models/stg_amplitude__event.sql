@@ -18,7 +18,7 @@ fields as (
 
 final_pre as (
     
-    select 
+    select
         _fivetran_synced,
         _insert_id,
         ad_id,
@@ -54,7 +54,7 @@ final_pre as (
         location_lng,
         os_name,
         os_version,
-        paying,
+        paying as is_paying,
         platform,
         processed_time,
         project_name,
@@ -75,9 +75,58 @@ final_pre as (
 final as (
 
     select
-        *,
-        {{ dbt_utils.surrogate_key(['event_id','session_id']) }} as unique_event_id,
-        {{ dbt_utils.surrogate_key(['user_id','session_id']) }} as unique_session_id
+        {{ dbt_utils.surrogate_key(['event_id','device_id','client_event_time']) }} as unique_event_id,
+        {{ dbt_utils.surrogate_key(['user_id','session_id']) }} as unique_session_id,
+        id as event_id,
+        event_properties,
+        event_time,
+        event_type,
+        event_type_id,
+        group_types,
+        group_properties,
+        session_id,
+        user_id,
+        user_properties,
+        amplitude_event_type,
+        amplitude_id,
+        _insert_id,
+        ad_id,
+        app,
+        project_name,
+        client_event_time,
+        client_upload_time,
+        city,
+        country,
+        data,
+        device_brand,
+        device_carrier,
+        device_family,
+        device_id,
+        device_manufacturer,
+        device_model,
+        device_type,
+        dma,
+        idfa,
+        ip_address,
+        language,
+        location_lat,
+        location_lng,
+        os_name,
+        os_version,
+        is_attribution_event,
+        library,
+        paying as is_paying,
+        platform,
+        processed_time,
+        region,
+        schema,
+        server_received_time,
+        server_upload_time,
+        start_version,
+        user_creation_time,
+        uuid,
+        version_name,
+        _fivetran_synced
     from final_pre
 )
 

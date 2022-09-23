@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: stg_amplitude__event
-    description: Table of all events tracked by Amplitude.
+    description: Table of all events tracked by Amplitude. Definitions are sourced from the Amplitude documentation [here](https://www.docs.developers.amplitude.com/analytics/apis/http-v2-api/#upload-request-body-parameters).
 
     columns:
       - name: unique_event_id
@@ -20,45 +20,35 @@ models:
         description: >
           (Android) Google Play Services advertising ID (AdID). This usually is wiped
           after ingestion and therefore will be blank
-      - name: amplitude_attribution_ids
-        description: >
-          Anonymized hash of the advertising IDs that we store for internal purposes;
-          not useful for the customer by any means. But this will appear if
-          advertising IDs were sent which proves that adid/idfv existed even though
-          currently wiped
-      - name: amplitude_event_type
-        description: >
-          Amplitude specific identifiers based on events Amplitude generates. This is
-          a legacy field so event_type should suffice for all queries.
       - name: app
         description: Project ID found in your project's Settings page
       - name: city
-        description: City
+        description: City where event was registered.
       - name: client_event_time
         description: >
           Local timestamp (UTC) of when the device logged the event.
       - name: client_upload_time
         description: The local timestamp (UTC) of when the device uploaded the event.
       - name: country
-        description: Country
+        description: Country where event was registered.
       - name: data
         description: >
           Dictionary where certain fields such as first_event and merged_amplitude_id
-          are stored.
+          are stored. Ex, {"first_event":true}
       - name: device_brand
-        description: Device brand
+        description: Brand of device where event was registered on.
       - name: device_carrier
-        description: Device carrier.
+        description: Carrier of device where event was registered on.
       - name: device_family
-        description: Device family. Apple iPhone
+        description: Device family. Ex, Apple iPhone
       - name: device_id
         description: The device specific identifier
       - name: device_manufacturer
-        description: Device manufacturer
+        description: Manufacturer of device where event was registered on.
       - name: device_model
-        description: The device model
+        description: The model of device where event was registered on.
       - name: device_type
-        description: Device type
+        description: Type of device where event was registered on.
       - name: dma
         description: Designated marketing area (DMA)
       - name: event_properties
@@ -81,7 +71,7 @@ models:
       - name: group_properties
         description: A dictionary of key-value pairs that represent data tied to the group. Each distinct value appears as a group segment on the Amplitude dashboard. You can store property values in an array, and date values are transformed into string values.
       - name: group_types
-        description: Group types. "Groups" in the source table, renamed here. See the Accounts documentation for more information.
+        description: Group types. "Groups" in the source table, renamed here. See the [Accounts documentation](https://help.amplitude.com/hc/en-us/articles/115001765532-Accounts) for more information.
       - name: idfa
         description: >
           (iOS) Identifier for Advertiser. This usually is wiped after ingestion and
@@ -92,29 +82,29 @@ models:
       - name: ip_address
         description: IP address
       - name: is_attribution_event
-        description: Boolean of whether event was an attribution event
+        description: Boolean of boolean of whether event was an attribution event
       - name: language
         description: The language set by the user
       - name: library
         description: Library being used to send the event data.
       - name: location_lat
-        description: Latitude
+        description: Latitude where event was registered.
       - name: location_lng
-        description: Longitude
+        description: Longitude where event was registered
       - name: os_name
-        description: OS name
+        description: OS name where event was registered on.
       - name: os_version
-        description: OS version
+        description: OS version where event was registered on.
       - name: paying
-        description: True if the user has ever logged any revenue, otherwise '(none)'. Note the property value can be modified via the\_Identify API.
+        description: Boolean of boolean of whether the user has ever logged any revenue, otherwise '(none)'. Note the property value can be modified via the\_Identify API.
       - name: platform
-        description: Platform of the device.
+        description: Platform of the device where event was registered on.
       - name: processed_time
         description: Time of when event was processed
       - name: project_name
         description: Project ID
       - name: region
-        description: Region
+        description: Region where event was registered on.
       - name: schema
         description: Schema ID
       - name: server_received_time
@@ -142,8 +132,7 @@ models:
         description: The app version
 
   - name: stg_amplitude__event_type
-    description: Table of all events types. 
-
+    description: Table of all events types. Definitions are sourced from the Amplitude documentation [here](https://www.docs.developers.amplitude.com/analytics/apis/dashboard-rest-api/?h=flow_hidden).
     columns:
       - name: event_type_id
         description: Event type ID
@@ -154,26 +143,26 @@ models:
         description: Timestamp of when Fivetran marked a record as deleted
       - name: _fivetran_synced
         description: Timestamp of when Fivetran synced a record
-      - name: autohidden
-        description: Whether event type is hidden
-      - name: deleted
-        description: Whether event type is deleted
+      - name: is_autohidden
+        description: Boolean of whether event type is hidden
+      - name: is_deleted
+        description: Boolean of whether event type is deleted
       - name: display
         description: The display name of the event
-      - name: flow_hidden
-        description: If the event is hidden from Pathfinder/Pathfinder Users or not
-      - name: hidden
-        description: If the event is hidden or not.
-      - name: in_waitroom
-        description: Whether event type is in waitroom
+      - name: is_flow_hidden
+        description: Boolean of whether the event is hidden from Pathfinder/Pathfinder Users or not
+      - name: is_hidden
+        description: Boolean of whether the event is hidden or not.
+      - name: is_in_waitroom
+        description: Boolean of whether event type is in waitroom
       - name: event_type_name
         description: Event type name
-      - name: non_active
-        description: If the event is marked inactive or not
+      - name: is_non_active
+        description: Boolean of whether the event is marked inactive or not
       - name: project_name
         description: Project name
-      - name: timeline_hidden
-        description: If the event is hidden or not
+      - name: is_timeline_hidden
+        description: Boolean of whether the event is hidden or not
       - name: totals
         description: The total number of times the event has happened this week
       - name: totals_delta
@@ -181,4 +170,4 @@ models:
       - name: value
         description: Name of the event in the raw data.
       - name: waitroom_approved
-        description: Waitroom approved
+        description: Boolean of whether is waitroom approved
