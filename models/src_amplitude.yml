@@ -16,6 +16,9 @@ sources:
       - name: event
         identifier: "{{ var('amplitude_event_identifier', 'event')}}"
         description: Each record represents an event sent for your project.
+        freshness: # make this more strict
+          warn_after: {count: 6, period: hour}
+          error_after: {count: 12, period: hour}
         columns:
           - name: _fivetran_deleted
             description: Timestamp of when Fivetran marked a record as deleted.
