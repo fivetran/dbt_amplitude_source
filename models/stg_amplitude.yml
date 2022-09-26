@@ -6,14 +6,14 @@ models:
 
     columns:
       - name: unique_event_id
-        description: A unique key for each event, concatenating event_id and session_id
+        description: A unique key for each event, concatenating event_id, device_id, and client_event_time
         tests:
           - unique
           - not_null
-      - name: unique_session_id
-        description: A unique key for each session, concatenating user_id and session_id
       - name: event_id
         description: A counter that distinguishes events
+      - name: unique_session_id
+        description: A unique key for each session, concatenating user_id and session_id
       - name: amplitude_id
         description: An internal ID used to count unique users.
       - name: ad_id
@@ -134,11 +134,13 @@ models:
   - name: stg_amplitude__event_type
     description: Table of all events types. Definitions are sourced from the Amplitude documentation [here](https://www.docs.developers.amplitude.com/analytics/apis/dashboard-rest-api/?h=flow_hidden).
     columns:
-      - name: event_type_id
-        description: Event type ID
+      - name: unique_event_type_id
+        description:  A unique key for each event, concatenating event_type_id and project_name. 
         tests:
           - unique
           - not_null
+      - name: event_type_id
+        description: Event type ID
       - name: _fivetran_deleted
         description: Timestamp of when Fivetran marked a record as deleted
       - name: _fivetran_synced
