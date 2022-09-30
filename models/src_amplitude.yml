@@ -177,7 +177,7 @@ sources:
           - name: totals
             description: The total number of times the event has happened this week
           - name: totals_delta
-            description: Totals delta
+            description: This represents the change in event volume from the previous week.
           - name: value
             description: Name of the event in the raw data.
           - name: waitroom_approved
