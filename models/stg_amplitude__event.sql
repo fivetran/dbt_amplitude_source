@@ -84,7 +84,7 @@ final as (
         group_types,
         group_properties,
         session_id,
-        user_id,
+        cast(user_id as {{ dbt_utils.type_string() }}) as user_id, 
         user_properties,
         cast(amplitude_id as {{ dbt_utils.type_string() }}) as amplitude_id,
         _insert_id,
