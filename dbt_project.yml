@@ -14,4 +14,3 @@ vars:
   amplitude_source:
     event: "{{ source('amplitude', 'event') }}"
     event_type: "{{ source('amplitude', 'event_type') }}"
-
