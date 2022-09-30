@@ -76,6 +76,7 @@ final as (
     select
         {{ dbt_utils.surrogate_key(['event_id','device_id','client_event_time']) }} as unique_event_id,
         {{ dbt_utils.surrogate_key(['user_id','session_id']) }} as unique_session_id,
+        coalesce(user_id, amplitude_id) as amplitude_user_id,
         event_id,
         event_properties,
         cast(event_time as {{ dbt_utils.type_timestamp() }}) as event_time,
