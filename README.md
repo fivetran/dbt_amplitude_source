@@ -25,6 +25,16 @@
 To use this dbt package, you must have the following:
 - At least one Fivetran Amplitude connector syncing data into your destination. 
 - A **BigQuery**, **Snowflake**, **Redshift**, **PostgreSQL**, or **Databricks** destination.
+  - If you are using Databricks you'll need to add the below to your `dbt_project.yml`. 
+
+```yml
+# dbt_project.yml
+
+dispatch:
+  - macro_namespace: dbt_utils
+    search_order: ['spark_utils', 'dbt_utils']
+```
+- **dbt Version**: This dbt package requires you have a functional dbt project that utilizes a dbt version within the respective range `>=1.0.0, <2.0.0`.
 
 ## Step 2: Install the package
 Include the following amplitude_source package version in your `packages.yml` file.
