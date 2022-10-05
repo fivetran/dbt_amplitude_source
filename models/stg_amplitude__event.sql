@@ -22,7 +22,7 @@ final_pre as (
         _fivetran_synced,
         _insert_id,
         ad_id,
-        amplitude_id,
+        cast(amplitude_id as {{ dbt_utils.type_string() }}) as amplitude_id,
         app,
         city,
         client_event_time,
@@ -64,7 +64,7 @@ final_pre as (
         session_id,
         start_version,
         user_creation_time,
-        user_id,
+        cast(user_id as {{ dbt_utils.type_string() }}) as user_id,
         user_properties,
         uuid,
         version_name

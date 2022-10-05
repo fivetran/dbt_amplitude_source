@@ -97,7 +97,7 @@ packages:
     - package: dbt-labs/dbt_utils
       version: [">=0.8.0", "<0.9.0"]
 ```
-          
+
 # 🙌 How is this package maintained and can I contribute?
 ## Package Maintenance
 The Fivetran team maintaining this package _only_ maintains the latest version of the package. We highly recommend that you stay consistent with the [latest version](https://hub.getdbt.com/fivetran/amplitude_source/latest/) of the package and refer to the [CHANGELOG](https://github.com/fivetran/dbt_amplitude_source/blob/main/CHANGELOG.md) and release notes for more information on changes across versions.
