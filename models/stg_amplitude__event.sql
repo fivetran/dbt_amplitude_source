@@ -19,12 +19,11 @@ fields as (
 final as (
 
     select
-        {{ dbt_utils.surrogate_key(['id','device_id','client_event_time']) }} as unique_event_id,
+        id as event_id,
+        cast(event_time as {{ dbt_utils.type_timestamp() }}) as event_time,
         {{ dbt_utils.surrogate_key(['user_id','session_id']) }} as unique_session_id,
         coalesce(user_id, amplitude_id) as amplitude_user_id,
-        id as event_id,
         event_properties,
-        cast(event_time as {{ dbt_utils.type_timestamp() }}) as event_time,
         event_type,
         event_type_id,
         group_types,
@@ -74,5 +73,7 @@ final as (
     from fields
 )
 
-select *
+select
+    *,
+    {{ dbt_utils.surrogate_key(['event_id','device_id','client_event_time','amplitude_user_id']) }} as unique_event_id
 from final
