@@ -4,7 +4,7 @@
     {"name": "_fivetran_synced", "datatype": dbt_utils.type_timestamp()},
     {"name": "_insert_id", "datatype": dbt_utils.type_string()},
     {"name": "ad_id", "datatype": dbt_utils.type_string()},
-    {"name": "amplitude_id", "datatype": dbt_utils.type_int()},
+    {"name": "amplitude_id", "datatype": dbt_utils.type_string()},
     {"name": "app", "datatype": dbt_utils.type_string()},
     {"name": "city", "datatype": dbt_utils.type_string()},
     {"name": "client_event_time", "datatype": dbt_utils.type_timestamp()},

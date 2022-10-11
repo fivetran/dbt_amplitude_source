@@ -22,7 +22,7 @@ final as (
         id as event_id,
         cast(event_time as {{ dbt_utils.type_timestamp() }}) as event_time,
         {{ dbt_utils.surrogate_key(['user_id','session_id']) }} as unique_session_id,
-        coalesce(user_id, (cast(amplitude_id as {{ dbt_utils.type_string() }}) as amplitude_id)) as amplitude_user_id,
+        coalesce(user_id, (cast(amplitude_id as {{ dbt_utils.type_string() }})) as amplitude_id) as amplitude_user_id,
         event_properties,
         event_type,
         event_type_id,
