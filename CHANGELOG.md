@@ -1,4 +1,4 @@
-# dbt_amplitude v0.1.0
+# dbt_amplitude_source v0.1.0
 🎉 Initial Release 🎉
 - This is the initial release of this package. 
 
