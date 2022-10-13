@@ -71,9 +71,15 @@ final as (
         version_name,
         _fivetran_synced
     from fields
+),
+
+surrogate as (
+    
+    select
+        *,
+        {{ dbt_utils.surrogate_key(['event_id','device_id','client_event_time','amplitude_user_id']) }} as unique_event_id
+    from final
 )
 
-select
-    *,
-    {{ dbt_utils.surrogate_key(['event_id','device_id','client_event_time','amplitude_user_id']) }} as unique_event_id
-from final
+select *
+from surrogate
