@@ -16,7 +16,7 @@ fields as (
     from base
 ),
 
-final_pre as (
+final as (
     
     select
         id as event_type_id,
@@ -39,13 +39,13 @@ final_pre as (
     from fields
 ),
 
-final as (
+surrogate as (
 
     select
         *,
         {{ dbt_utils.surrogate_key(['event_type_id','project_name']) }} as unique_event_type_id
-    from final_pre
+    from final
 )
 
 select *
-from final
+from surrogate

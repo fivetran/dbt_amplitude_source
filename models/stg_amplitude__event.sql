@@ -22,7 +22,7 @@ final as (
         id as event_id,
         cast(event_time as {{ dbt_utils.type_timestamp() }}) as event_time,
         {{ dbt_utils.surrogate_key(['user_id','session_id']) }} as unique_session_id,
-        coalesce(cast(user_id as {{ dbt_utils.type_string() }}), (cast(amplitude_id as {{ dbt_utils.type_string() }})) ) as amplitude_user_id,
+        coalesce(cast(user_id as {{ dbt_utils.type_string() }}), (cast(amplitude_id as {{ dbt_utils.type_string() }}))) as amplitude_user_id,
         event_properties,
         event_type,
         event_type_id,
@@ -71,9 +71,15 @@ final as (
         version_name,
         _fivetran_synced
     from fields
+),
+
+surrogate as (
+
+    select
+        *,
+        {{ dbt_utils.surrogate_key(['event_id','device_id','client_event_time','amplitude_user_id']) }} as unique_event_id
+    from final
 )
 
-select
-    *,
-    {{ dbt_utils.surrogate_key(['event_id','device_id','client_event_time','amplitude_user_id']) }} as unique_event_id
-from final
+select *
+from surrogate
