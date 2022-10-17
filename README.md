@@ -26,8 +26,8 @@ To use this dbt package, you must have the following:
 - At least one Fivetran Amplitude connector syncing data into your destination. 
 - A **BigQuery**, **Snowflake**, **Redshift**, **PostgreSQL**, or **Databricks** destination.
 
-### Databricks Dispatch Configuration
-If you are using a Databricks destination with this package you will need to add the below (or a variation of the below) dispatch configuration within your `dbt_project.yml`. This is required in order for the package to accurately search for macros within the `dbt-labs/spark_utils` then the `dbt-labs/dbt_utils` packages respectively.
+### Databricks dispatch configuration
+If you are using a Databricks destination with this package, you must add the following (or a variation of the following) dispatch configuration within your `dbt_project.yml`. This is required in order for the package to accurately search for macros within the `dbt-labs/spark_utils` then the `dbt-labs/dbt_utils` packages respectively.
 ```yml
 dispatch:
   - macro_namespace: dbt_utils
@@ -42,9 +42,8 @@ packages:
   - package: fivetran/amplitude_source
     version: [">=0.1.0", "<0.2.0"]
 ```
-## Step 3: Configure your variables
+## Step 3: Define database and schema variables
 
-### Define database and schema variables
 By default, this package runs using your destination and the `amplitude_source` schema. If this is not where your Amplitude data is (for example, if your Amplitude schema is named `amplitude_fivetran`), you would add the following configuration to your root `dbt_project.yml` file with your custom database and schema names:
 
 ```yml
@@ -57,7 +56,7 @@ vars:
 <details><summary>Expand to view details</summary>
 <br>
 
-### Change the source table references
+### Change source table references
 If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable:
 > IMPORTANT: See this project's [`dbt_project.yml`](https://github.com/fivetran/dbt_amplitude_source/blob/main/dbt_project.yml) variable declarations to see the expected names.
     
@@ -66,7 +65,7 @@ vars:
     amplitude_<default_source_table_name>_identifier: your_table_name 
 ```
 
-### Change the build schema
+### Change build schema
 By default, this package builds the Amplitude staging models within a schema titled (`<target_schema>` + `_source_amplitude`) in your destination. If this is not where you would like your Amplitude staging data to be written to, add the following configuration to your root `dbt_project.yml` file:
 
 ```yml
