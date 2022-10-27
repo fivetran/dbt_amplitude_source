@@ -43,7 +43,7 @@ surrogate as (
 
     select
         *,
-        {{ dbt_utils.surrogate_key(['event_type_id','project_name']) }} as unique_event_type_id
+        {{ dbt_utils.generate_surrogate_key(['event_type_id','project_name']) }} as unique_event_type_id
     from final
 )
 
