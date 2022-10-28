@@ -5,7 +5,7 @@ profile: 'integration_tests'
 
 
 vars:
-    amplitude_schema: amplitude_source_integration_tests
+    amplitude_schema: amplitude_source_integration_tests_1
     amplitude_event_identifier: "amplitude_event_data"
     amplitude_event_type_identifier: "amplitude_event_type_data"
 
