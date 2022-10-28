@@ -1,5 +1,5 @@
 name: 'amplitude_source_integration_tests'
-version: '0.1.0'
+version: '0.2.0'
 config-version: 2
 profile: 'integration_tests'
 
@@ -11,7 +11,7 @@ vars:
 
 dispatch:
   - macro_namespace: dbt_utils
-    search_order: ['!!!!!!! REPLACE 'spark' WITH 'spark','databricks' OR EQUIV !!!!!!!_utils', 'dbt_utils']
+    search_order:['spark_utils', 'dbt_utils']
 
 seeds:
   amplitude_source_integration_tests:

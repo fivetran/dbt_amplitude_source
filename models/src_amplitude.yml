@@ -2,7 +2,7 @@ version: 2
 
 sources: 
   - name: amplitude
-    database: "{% if target.type != '!!!!!!! REPLACE 'spark' WITH 'spark','databricks' OR EQUIV !!!!!!!'%}{{var ('amplitude_database', target.database)}}{% endif %}"
+    database: "{% if target.type != 'spark'%}{{ var('apple_search_ads_database', target.database) }}{% endif %}"
     schema: "{{ var('amplitude_schema', 'amplitude')}}"
 
     loader: fivetran
