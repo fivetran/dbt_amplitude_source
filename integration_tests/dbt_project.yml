@@ -1,11 +1,11 @@
 name: 'amplitude_source_integration_tests'
-version: '0.1.0'
+version: '0.2.0'
 config-version: 2
 profile: 'integration_tests'
 
 
 vars:
-    amplitude_schema: amplitude_source_integration_tests
+    amplitude_schema: amplitude_source_integration_tests_1
     amplitude_event_identifier: "amplitude_event_data"
     amplitude_event_type_identifier: "amplitude_event_type_data"
 
