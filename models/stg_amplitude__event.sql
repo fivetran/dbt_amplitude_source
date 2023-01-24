@@ -21,6 +21,7 @@ final as (
     select
         id as event_id,
         cast(event_time as {{ dbt.type_timestamp() }}) as event_time,
+        {{ dbt.date_trunc('day', 'event_time') }} as event_day,
         {{ dbt_utils.generate_surrogate_key(['user_id','session_id']) }} as unique_session_id,
         coalesce(cast(user_id as {{ dbt.type_string() }}), (cast(amplitude_id as {{ dbt.type_string() }}))) as amplitude_user_id,
         event_properties,
