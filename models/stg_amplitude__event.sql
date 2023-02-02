@@ -71,6 +71,9 @@ final as (
         version_name,
         _fivetran_synced
     from fields
+
+    where cast({{ dbt.date_trunc('day', 'event_time') }} as date) >= {{ "cast('" ~ var('date_range_start',  '2020-01-01') ~ "' as date)" }} -- filter to records past a specific date
+
 ),
 
 surrogate as (

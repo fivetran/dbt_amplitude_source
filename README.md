@@ -56,6 +56,15 @@ vars:
 <details><summary>Expand to view details</summary>
 <br>
 
+### Filter records based on event time
+Your Amplitude data may contain event records going far back that you may not find useful and causes longer build times. Therefore we have added the functionality to filter records via the `date_range_start` variable. The default is '2020-01-01' but you may configure it in your root `dbt_project.yml` file:
+
+```yml
+vars:
+    amplitude_source:
+      date_range_start: '2022-03-01' # your start date here
+```
+
 ### Change source table references
 If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable:
 > IMPORTANT: See this project's [`dbt_project.yml`](https://github.com/fivetran/dbt_amplitude_source/blob/main/dbt_project.yml) variable declarations to see the expected names.
