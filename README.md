@@ -40,7 +40,7 @@ Include the following amplitude_source package version in your `packages.yml` fi
 ```yaml
 packages:
   - package: fivetran/amplitude_source
-    version: [">=0.2.0", "<0.3.0"]
+    version: [">=0.3.0", "<0.4.0"]
 ```
 ## Step 3: Define database and schema variables
 
@@ -56,13 +56,13 @@ vars:
 <details><summary>Expand to view details</summary>
 <br>
 
-### Filter records based on event time
-Your Amplitude data may contain event records going far back that you may not find useful and causes longer build times. Therefore we have added the functionality to filter records via the `date_range_start` variable. The default is '2020-01-01' but you may configure it in your root `dbt_project.yml` file:
+### Change event date range
+Because of the typical volume of event data, you may want to limit this package's models to work with a recent date range. Therefore we have added the functionality to filter records via the `date_range_start` variable. The default is '2020-01-01' but you may configure it in your root `dbt_project.yml` file:
 
 ```yml
 vars:
-    amplitude_source:
-      date_range_start: '2022-03-01' # your start date here
+    amplitude:
+      date_range_start: '2022-01-01' # your start date here
 ```
 
 ### Change source table references
