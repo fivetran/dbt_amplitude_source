@@ -52,18 +52,19 @@ vars:
     amplitude_schema: your_schema_name 
 ```
 
-## (Optional) Step 4: Additional configurations
-<details><summary>Expand to view details</summary>
-<br>
-
-### Change event date range
-Because of the typical volume of event data, you may want to limit this package's models to work with a recent date range. Therefore we have added the functionality to filter records via the `date_range_start` variable. The default is '2020-01-01' but you may configure it in your root `dbt_project.yml` file:
+## Step 4: Change event date range
+Because of the typical volume of event data, you may want to limit this package's models to work with a given date range. Therefore we have added the functionality to filter records via the `date_range_start` and `date_range_end` variables. The default range is between '2020-01-01' and current day, but you may configure it in your root `dbt_project.yml` file:
 
 ```yml
 vars:
     amplitude:
       date_range_start: '2022-01-01' # your start date here
+      date_range_end: '2022-12-01' # your end date here
 ```
+
+## (Optional) Step 5: Additional configurations
+<details><summary>Expand to view details</summary>
+<br>
 
 ### Change source table references
 If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable:
@@ -85,7 +86,7 @@ models:
 
 </details>
 
-## (Optional) Step 5: Orchestrate your models with Fivetran Transformations for dbt Core™
+## (Optional) Step 6: Orchestrate your models with Fivetran Transformations for dbt Core™
 <details><summary>Expand to view details</summary>
 <br>
 
