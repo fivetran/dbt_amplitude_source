@@ -6,6 +6,7 @@
 - Moved the `date_range_start` and `date_range_end` variables further upstream to the `stg_amplitude__event` model. 
     - This way event records will be filtered from the onset, which will help reduce unnecessary volume later downstream. 
     - The filtered data will be between (and including) the `date_range_start` and `date_range_end` dates.
+    - If a `date_range_start` is not provided, it will use `2020-01-01` as default.
     - If a `date_range_end` is not provided, it will use a month from the current date by default.
 - Brought the `event_day` field upstream to the `stg_amplitude__event` model. 
 
