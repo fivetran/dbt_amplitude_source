@@ -3,7 +3,11 @@
 ## 🚨 Breaking Changes 🚨:
 [PR #8](https://github.com/fivetran/dbt_amplitude_source/pull/8) includes the following update:
 
-- Moved the `date_range_start` and `date_range_end` variables further upstream to the `stg_amplitude__event` model. This way event records will be filtered from the onset, which will help reduce unnecessary volume later downstream. We also brought the `event_day` field upstream to `stg_amplitude__event` as well. 
+- Moved the `date_range_start` and `date_range_end` variables further upstream to the `stg_amplitude__event` model. 
+    - This way event records will be filtered from the onset, which will help reduce unnecessary volume later downstream. 
+    - The filtered data will be between (and including) the `date_range_start` and `date_range_end` dates.
+    - If a `date_range_end` is not provided, it will use a month from the current date by default.
+- Brought the `event_day` field upstream to the `stg_amplitude__event` model. 
 
 # dbt_amplitude_source v0.2.0
 
