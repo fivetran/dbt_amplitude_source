@@ -52,7 +52,7 @@ vars:
     amplitude_schema: your_schema_name 
 ```
 
-## Step 4: Change event date range
+## Step 4: Configure event date range
 Because of the typical volume of event data, you may want to limit this package's models to work with a recent date range. Therefore we have added the functionality to filter records via the `date_range_start` and `date_range_end` variables. TThe default date range starts at '2020-01-01' and ends one day past the current day, but you may configure it in your root `dbt_project.yml` file:
 
 ```yml
