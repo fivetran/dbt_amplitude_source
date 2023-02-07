@@ -53,7 +53,7 @@ vars:
 ```
 
 ## Step 4: Change event date range
-Because of the typical volume of event data, you may want to limit this package's models to work with a given date range. Therefore we have added the functionality to filter records via the `date_range_start` and `date_range_end` variables. The default range is between '2020-01-01' and current day, but you may configure it in your root `dbt_project.yml` file:
+Because of the typical volume of event data, you may want to limit this package's models to work with a recent date range. Therefore we have added the functionality to filter records via the `date_range_start` and `date_range_end` variables. TThe default date range starts at '2020-01-01' and ends one day past the current day, but you may configure it in your root `dbt_project.yml` file:
 
 ```yml
 vars:
@@ -61,6 +61,7 @@ vars:
       date_range_start: '2022-01-01' # your start date here
       date_range_end: '2022-12-01' # your end date here
 ```
+If you adjust the date range variables, we recommend running `dbt run --full-refresh` to ensure no data quality issues within the adjusted date range.
 
 ## (Optional) Step 5: Additional configurations
 <details><summary>Expand to view details</summary>
