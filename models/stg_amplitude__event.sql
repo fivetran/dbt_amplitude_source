@@ -73,8 +73,8 @@ final as (
         _fivetran_synced
     from fields
 
-    where cast({{ dbt.date_trunc('day', 'event_time') }} as date) >= {{ "cast('" ~ var('date_range_start',  '2020-01-01') ~ "' as date)" }} -- filter to records past a specific date
-    and cast({{ dbt.date_trunc('day', 'event_time') }} as date) <= cast({{ "'" ~ var('date_range_end',[]) ~ "'" if var('date_range_end',[]) else dbt.dateadd('month', 1, dbt.date_trunc('day', dbt.current_timestamp_backcompat())) }} as date) -- filter to records before a specific date
+    where cast({{ dbt.date_trunc('day', 'event_time') }} as date) >= {{ "cast('" ~ var('amplitude__date_range_start',  '2020-01-01') ~ "' as date)" }} -- filter to records past a specific date
+    and cast({{ dbt.date_trunc('day', 'event_time') }} as date) <= cast({{ "'" ~ var('amplitude__date_range_end',[]) ~ "'" if var('amplitude__date_range_end',[]) else dbt.dateadd('month', 1, dbt.date_trunc('day', dbt.current_timestamp_backcompat())) }} as date) -- filter to records before a specific date
 
 ),
 

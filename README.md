@@ -57,8 +57,8 @@ Because of the typical volume of event data, you may want to limit this package'
 
 ```yml
 vars:
-    date_range_start: '2022-01-01' # your start date here
-    date_range_end: '2022-12-01' # your end date here
+    amplitude__date_range_start: '2022-01-01' # your start date here
+    amplitude__date_range_end: '2022-12-01' # your end date here
 ```
 If you adjust the date range variables, we recommend running `dbt run --full-refresh` to ensure no data quality issues within the adjusted date range.
 
