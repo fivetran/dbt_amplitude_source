@@ -40,7 +40,7 @@ Include the following amplitude_source package version in your `packages.yml` fi
 ```yaml
 packages:
   - package: fivetran/amplitude_source
-    version: [">=0.2.0", "<0.3.0"]
+    version: [">=0.3.0", "<0.4.0"]
 ```
 ## Step 3: Define database and schema variables
 
@@ -52,7 +52,17 @@ vars:
     amplitude_schema: your_schema_name 
 ```
 
-## (Optional) Step 4: Additional configurations
+## Step 4: Configure event date range
+Because of the typical volume of event data, you may want to limit this package's models to work with a more recent date range. Therefore we have added the functionality to filter records via the `amplitude__date_range_start` and `amplitude__date_range_end` variables within the `stg_amplitude__event` model. The default date range starts at '2020-01-01' and ends one month past the current day, but you may configure it in your root `dbt_project.yml` file:
+
+```yml
+vars:
+    amplitude__date_range_start: '2022-01-01' # your start date here
+    amplitude__date_range_end: '2022-12-01' # your end date here
+```
+If you adjust the date range variables, we recommend running `dbt run --full-refresh` to ensure no data quality issues within the adjusted date range.
+
+## (Optional) Step 5: Additional configurations
 <details><summary>Expand to view details</summary>
 <br>
 
@@ -76,7 +86,7 @@ models:
 
 </details>
 
-## (Optional) Step 5: Orchestrate your models with Fivetran Transformations for dbt Core™
+## (Optional) Step 6: Orchestrate your models with Fivetran Transformations for dbt Core™
 <details><summary>Expand to view details</summary>
 <br>
 

@@ -65,6 +65,8 @@ models:
           organize events on Amplitude charts. Note: If the difference between
           server_received_time and client_upload_time is less than 60 seconds, the
           event_time will not be adjusted and will equal the client_event_time.
+      - name: event_day
+        description: The day of the event time, in date format.
       - name: event_type
         description: The assigned type of event. Example 'Add Friend'
       - name: event_type_id

@@ -21,6 +21,7 @@ final as (
     select
         id as event_id,
         cast(event_time as {{ dbt.type_timestamp() }}) as event_time,
+        cast({{ dbt.date_trunc('day', 'event_time') }} as date) as event_day,
         {{ dbt_utils.generate_surrogate_key(['user_id','session_id']) }} as unique_session_id,
         coalesce(cast(user_id as {{ dbt.type_string() }}), (cast(amplitude_id as {{ dbt.type_string() }}))) as amplitude_user_id,
         event_properties,
@@ -71,6 +72,10 @@ final as (
         version_name,
         _fivetran_synced
     from fields
+
+    where cast({{ dbt.date_trunc('day', 'event_time') }} as date) >= {{ "cast('" ~ var('amplitude__date_range_start',  '2020-01-01') ~ "' as date)" }} -- filter to records past a specific date
+    and cast({{ dbt.date_trunc('day', 'event_time') }} as date) <= cast({{ "'" ~ var('amplitude__date_range_end',[]) ~ "'" if var('amplitude__date_range_end',[]) else dbt.dateadd('month', 1, dbt.date_trunc('day', dbt.current_timestamp_backcompat())) }} as date) -- filter to records before a specific date
+
 ),
 
 surrogate as (
