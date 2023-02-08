@@ -53,7 +53,7 @@ vars:
 ```
 
 ## Step 4: Configure event date range
-Because of the typical volume of event data, you may want to limit this package's models to work with a more recent date range. Therefore we have added the functionality to filter records via the `date_range_start` and `date_range_end` variables within the `stg_amplitude__event` model. The default date range starts at '2020-01-01' and ends one month past the current day, but you may configure it in your root `dbt_project.yml` file:
+Because of the typical volume of event data, you may want to limit this package's models to work with a more recent date range. Therefore we have added the functionality to filter records via the `amplitude__date_range_start` and `amplitude__date_range_end` variables within the `stg_amplitude__event` model. The default date range starts at '2020-01-01' and ends one month past the current day, but you may configure it in your root `dbt_project.yml` file:
 
 ```yml
 vars:
