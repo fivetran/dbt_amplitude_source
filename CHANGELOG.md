@@ -10,6 +10,8 @@
     - If a `amplitude__date_range_start` is not provided, it will use `2020-01-01` as default.
     - If a `amplitude__date_range_end` is not provided, it will use a month from the current date by default.
 - Brought the `event_day` field upstream to the `stg_amplitude__event` model. 
+- Please note, a `dbt run --full-refresh` will be required after upgrading to this version in order to capture the updates.
+
 
 # dbt_amplitude_source v0.2.0
 
