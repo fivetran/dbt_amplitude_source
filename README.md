@@ -34,13 +34,13 @@ dispatch:
     search_order: ['spark_utils', 'dbt_utils']
 ```
 
-## Step 2: Install the package
-Include the following amplitude_source package version in your `packages.yml` file.
+## Step 2: Install the package (skip if also using the `amplitude` transformation package)
+If you  are **not** using the [Amplitude transformation package](https://github.com/fivetran/dbt_amplitude), include the following amplitude_source package version in your `packages.yml` file.
 > TIP: Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
 ```yaml
 packages:
   - package: fivetran/amplitude_source
-    version: [">=0.3.0", "<0.4.0"]
+    version: [">=0.3.0", "<0.4.0"] # we recommend using ranges to capture non-breaking changes automatically
 ```
 ## Step 3: Define database and schema variables
 
