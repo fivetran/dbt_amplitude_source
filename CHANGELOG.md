@@ -1,3 +1,8 @@
+# dbt_amplitude_source version.version
+
+## Documentation
+- Corrected references to connectors and connections in the README. ([#13](https://github.com/fivetran/dbt_amplitude_source/pull/13))
+
 # dbt_amplitude_source v0.UPDATE.UPDATE
 
  ## Under the Hood:
