@@ -73,9 +73,8 @@ final as (
         _fivetran_synced
     from fields
 
-    where cast(event_time as date) >= cast({{ "'" ~ var('amplitude__date_range_start', '2020-01-01') ~ "'" }} as date) -- filter to records past a specific date
-    and cast(event_time as date) <= cast({{ "'" ~ var('amplitude__date_range_end', dbt.current_timestamp()) ~ "'"  }} as date) -- filter to records before a specific date
-
+    where cast(event_time as date) >= {{ "cast('" ~ var('amplitude__date_range_start',  '2020-01-01') ~ "' as date)" }} -- filter to records past a specific date
+    and cast(event_time as date) <= cast({{ "'" ~ var('amplitude__date_range_end',[]) ~ "'" if var('amplitude__date_range_end',[]) else dbt.current_timestamp() }} as date) -- filter to records before a specific date
 ),
 
 surrogate as (
