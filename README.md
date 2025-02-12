@@ -40,7 +40,7 @@ If you  are **not** using the [Amplitude transformation package](https://github.
 ```yaml
 packages:
   - package: fivetran/amplitude_source
-    version: [">=0.3.0", "<0.4.0"] # we recommend using ranges to capture non-breaking changes automatically
+    version: "0.4.0-a1"
 ```
 ### Step 3: Define database and schema variables
 

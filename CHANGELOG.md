@@ -1,14 +1,15 @@
-# dbt_amplitude_source version.version
+# dbt_amplitude_source v0.4.0-a1
+This pre-release includes the following updates:
+
+## Bug fix
+- Limited events to events with event_time of today and before to avoid conflicts with downstream incremental models. Future events are considered erroneous anyway. ([#14](https://github.com/fivetran/dbt_amplitude_source/pull/14))
 
 ## Documentation
 - Corrected references to connectors and connections in the README. ([#13](https://github.com/fivetran/dbt_amplitude_source/pull/13))
 
-# dbt_amplitude_source v0.UPDATE.UPDATE
-
  ## Under the Hood:
+- Incorporated the new `fivetran_utils.drop_schemas_automation` macro into the end of each Buildkite integration test job. ([#9](https://github.com/fivetran/dbt_amplitude_source/pull/9))
 
-- Incorporated the new `fivetran_utils.drop_schemas_automation` macro into the end of each Buildkite integration test job.
-- Updated the pull request [templates](/.github).
 # dbt_amplitude_source v0.3.0
 
 ## 🚨 Breaking Changes 🚨:
