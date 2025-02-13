@@ -2,7 +2,8 @@
 This pre-release includes the following updates:
 
 ## Bug fix
-- Limited events to events with event_time of today and before to avoid conflicts with downstream incremental models. Future events are considered erroneous anyway. ([#14](https://github.com/fivetran/dbt_amplitude_source/pull/14))
+- Filtered events to include only those with `event_time` up to and including the current date, preventing data quality issues in downstream incremental models. Future events are treated as erroneous.
+ ([#14](https://github.com/fivetran/dbt_amplitude_source/pull/14))
 
 ## Documentation
 - Corrected references to connectors and connections in the README. ([#13](https://github.com/fivetran/dbt_amplitude_source/pull/13))
