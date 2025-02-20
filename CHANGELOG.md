@@ -1,7 +1,7 @@
 # dbt_amplitude_source v0.4.0
 This release includes the following updates:
 
-## Bug fix
+## Breaking Change
 - Filtered events to include only those with `event_time` up to and including the current date, preventing data quality issues in downstream incremental models. Future events are treated as erroneous. ([#14](https://github.com/fivetran/dbt_amplitude_source/pull/14))
 
 ## Documentation
