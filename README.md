@@ -1,4 +1,6 @@
-<p align="center">
+# Amplitude Source dbt Package ([Docs](https://fivetran.github.io/dbt_amplitude_source/))
+
+<p align="left">
     <a alt="License"
         href="https://github.com/fivetran/dbt_amplitude_source/blob/main/LICENSE">
         <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
@@ -10,7 +12,6 @@
         <img src="https://img.shields.io/badge/Contributions-welcome-blueviolet" /></a>
 </p>
 
-# Amplitude Source dbt Package ([Docs](https://fivetran.github.io/dbt_amplitude_source/))
 ## What does this dbt package do?
 - Materializes [Amplitude staging tables](https://fivetran.github.io/dbt_amplitude_source/#!/overview/amplitude_source/models/?g_v=1) which leverage data in the format described by [this ERD](https://fivetran.com/docs/applications/amplitude/#schemainformation). These staging tables clean, test, and prepare your Amplitude data from [Fivetran's connector](https://fivetran.com/docs/applications/amplitude) for analysis by doing the following:
   - Name columns for consistency across all packages and for easier analysis
@@ -53,7 +54,7 @@ vars:
 ```
 
 ### Step 4: Configure event date range
-Because of the typical volume of event data, you may want to limit this package's models to work with a more recent date range. Therefore we have added the functionality to filter records via the `amplitude__date_range_start` and `amplitude__date_range_end` variables within the `stg_amplitude__event` model. The default date range starts at '2020-01-01' and ends one month past the current day, but you may configure it in your root `dbt_project.yml` file:
+Because of the typical volume of event data, you may want to limit this package's models to work with a more recent date range. Therefore we have added the functionality to filter records via the `amplitude__date_range_start` and `amplitude__date_range_end` variables within the `stg_amplitude__event` model. The default date range starts at `'2020-01-01'` and extends up to and including the current date. You can configure this in your root `dbt_project.yml` file:
 
 ```yml
 vars:
