@@ -1,3 +1,12 @@
+# dbt_amplitude_source v0.4.1
+
+## Under the Hood
+- Prepends `materialized` configs in the package's `dbt_project.yml` file with `+` to improve compatibility with the newer versions of dbt-core starting with v1.10.0. ([PR #15](https://github.com/fivetran/dbt_amplitude_source/pull/15))
+- Updates the package maintainer pull request template. ([PR #16](https://github.com/fivetran/dbt_amplitude_source/pull/16))
+
+## Contributors
+- [@b-per](https://github.com/b-per) ([PR #15](https://github.com/fivetran/dbt_amplitude_source/pull/15))
+
 # dbt_amplitude_source v0.4.0
 This release includes the following updates:
 
