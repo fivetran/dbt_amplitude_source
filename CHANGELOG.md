@@ -5,6 +5,7 @@
 ## Breaking Change for dbt Core < 1.9.6
 
 > *Note: This is not relevant to Fivetran Quickstart users.*
+
 Migrated `freshness` from a top-level source property to a source `config` in alignment with [recent updates](https://github.com/dbt-labs/dbt-core/issues/11506) from dbt Core. This will resolve the following deprecation warning that users running dbt >= 1.9.6 may have received:
 
 ```
