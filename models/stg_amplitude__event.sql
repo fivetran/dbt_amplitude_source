@@ -1,6 +1,8 @@
+{% set source_columns_in_relation = adapter.get_columns_in_relation(ref('stg_amplitude__event_tmp')) %}
+
 with base as (
 
-    select * 
+    select *
     from {{ ref('stg_amplitude__event_tmp') }}
 ),
 
@@ -9,7 +11,7 @@ fields as (
     select
         {{
             fivetran_utils.fill_staging_columns(
-                source_columns=adapter.get_columns_in_relation(ref('stg_amplitude__event_tmp')),
+                source_columns=source_columns_in_relation,
                 staging_columns=get_event_columns()
             )
         }}
@@ -24,14 +26,14 @@ final as (
         cast({{ dbt.date_trunc('day', 'event_time') }} as date) as event_day,
         {{ dbt_utils.generate_surrogate_key(['user_id','session_id']) }} as unique_session_id,
         coalesce(cast(user_id as {{ dbt.type_string() }}), (cast(amplitude_id as {{ dbt.type_string() }}))) as amplitude_user_id,
-        event_properties,
+        {{ amplitude_source.json_to_string("event_properties", source_columns_in_relation) }} as event_properties,
         event_type,
         event_type_id,
         group_types,
-        group_properties,
+        {{ amplitude_source.json_to_string("group_properties", source_columns_in_relation) }} as group_properties,
         session_id,
-        cast(user_id as {{ dbt.type_string() }}) as user_id, 
-        user_properties,
+        cast(user_id as {{ dbt.type_string() }}) as user_id,
+        {{ amplitude_source.json_to_string("user_properties", source_columns_in_relation) }} as user_properties,
         cast(amplitude_id as {{ dbt.type_string() }}) as amplitude_id,
         _insert_id,
         ad_id,

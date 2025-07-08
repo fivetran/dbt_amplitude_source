@@ -1,5 +1,5 @@
 name: 'amplitude_source_integration_tests'
-version: '0.5.0'
+version: '0.5.1'
 config-version: 2
 profile: 'integration_tests'
 
@@ -27,10 +27,27 @@ seeds:
         schema: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         session_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         user_id: "{{ 'varchar(100)' if target.name in ('redshift', 'postgres') else 'string' }}"
+        event_properties: "{{ 'string' if target.type in ('bigquery', 'spark', 'databricks') else 'varchar' }}"
+        group_properties: "{{ 'string' if target.type in ('bigquery', 'spark', 'databricks') else 'varchar' }}"
+        user_properties: "{{ 'string' if target.type in ('bigquery', 'spark', 'databricks') else 'varchar' }}"
     amplitude_event_type_data:
       +column_types:
         id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         project_name: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    amplitude_event_bq_json_data:
+      +enabled: "{{ target.type == 'bigquery' }}"
+      +column_types:
+        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        app: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        amplitude_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        event_type_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        project_name: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        schema: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        session_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        user_id: "{{ 'varchar(100)' if target.name in ('redshift', 'postgres') else 'string' }}"
+        event_properties: json
+        group_properties: json
+        user_properties: json
 
 flags:
   send_anonymous_usage_stats: False

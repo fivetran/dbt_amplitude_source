@@ -20,4 +20,8 @@ dbt seed --target "$db" --full-refresh
 dbt run --target "$db" --full-refresh
 dbt source freshness --target "$db" || echo "...Only verifying freshness runs..."
 dbt test --target "$db"
+if [ "$db" = "bigquery" ]; then
+dbt run --vars '{amplitude_event_identifier: amplitude_event_bq_json_data}' --target "$db" --full-refresh
+dbt test --target "$db"
+fi
 dbt run-operation fivetran_utils.drop_schemas_automation --target "$db"

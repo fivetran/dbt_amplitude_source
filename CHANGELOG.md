@@ -1,3 +1,13 @@
+# dbt_amplitude_source v0.5.1
+
+[PR #XX](https://github.com/fivetran/dbt_amplitude_source/pull/XX) includes the following updates:
+
+## Under the Hood
+- Added BigQuery JSON field support for the following model and columns:
+  - `stg_amplitude__event`: `event_properties`, `group_properties`, `user_properties` columns
+- Added the `json_to_string()` macro for BigQuery to convert JSON fields to strings for reliable downstream parsing.
+- Included json versions to the integration tests to ensure json data type compatibility.
+
 # dbt_amplitude_source v0.5.0
 
 [PR #17](https://github.com/fivetran/dbt_amplitude_source/pull/17) includes the following updates:
